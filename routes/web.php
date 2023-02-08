@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AliasesWebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AliasesWebController::class, 'home']);
+Route::post('/', [AliasesWebController::class, 'addNewAlias'])->name('aliases.addNew');
+Route::get('/{alias}', [AliasesWebController::class, 'redirect']);
