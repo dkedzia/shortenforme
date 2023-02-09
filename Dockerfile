@@ -49,13 +49,4 @@ USER www
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 
-CMD cp .env.example .env \
-    && composer install \
-    && php artisan key:generate \
-    && php artisan migrate \
-    && php artisan db:seed \
-    && php artisan migrate --env=testing \
-    && php ./vendor/phpunit/phpunit/phpunit --configuration ./phpunit.xml ./tests \
-    && php-fpm
-
 CMD ["php-fpm"]
