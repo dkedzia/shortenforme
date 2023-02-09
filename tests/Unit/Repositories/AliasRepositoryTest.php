@@ -40,7 +40,7 @@ class AliasRepositoryTest extends TestCase
     {
         // given
         $alias = Alias::factory()->create(['alias' => 'qwertyuiop']);
-//        config(['app.url' => 'http://localhost']);
+        config(['app.url' => 'http://localhost']);
 
         // when
         $shortenedUrl = AliasRepository::getShortenedUrl($alias);
