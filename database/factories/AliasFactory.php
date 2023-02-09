@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Alias\RandomAliasGenerator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class AliasFactory extends Factory
     {
         return [
             'origin_url' => fake()->url(),
-            'alias' => fake()->shuffleString()
+            'alias' => substr(str_shuffle('iuogernjzdgdsuor'), 0, 10)
         ];
     }
 }

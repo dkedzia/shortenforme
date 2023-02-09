@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('aliases', function (Blueprint $table) {
             $table->id();
-            $table->string('origin_url')->unique();
+            $table->text('origin_url');
             $table->string('alias')->unique();
             $table->timestamps();
         });

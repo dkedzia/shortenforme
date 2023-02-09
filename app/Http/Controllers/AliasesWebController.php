@@ -18,12 +18,16 @@ class AliasesWebController extends Controller
         return view('home');
     }
 
-    public function addNewAlias(AddAliasRequest $addAliasRequest): Factory|View|Application
+    public function addNewAlias(AddAliasRequest $addAliasRequest)
     {
         $url = $addAliasRequest->validated()['origin_url'];
         $alias = AliasRepository::createAliasForUrl($url);
-
-        return view('aliasAdded', ['shortenedUrl' => AliasRepository::getShortenedUrl($alias)]);
+        return response()
+            ->view(
+                'aliasAdded',
+                ['shortenedUrl' => AliasRepository::getShortenedUrl($alias)],
+                201
+            );
     }
 
     public function redirect(string $alias): RedirectResponse
@@ -31,6 +35,6 @@ class AliasesWebController extends Controller
         /** @var Alias $alias */
         $alias = Alias::where('alias', $alias)->firstOrFail();
 
-        return Redirect::away($alias->getOriginUrl());
+        return Redirect::away($alias->getOriginUrl(), 301);
     }
 }

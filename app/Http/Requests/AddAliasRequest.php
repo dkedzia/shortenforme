@@ -24,7 +24,7 @@ class AddAliasRequest extends FormRequest
     public function rules()
     {
         return [
-            'origin_url' => 'required|max:255|url',
+            'origin_url' => 'required|max:1000|url',
         ];
     }
 }
