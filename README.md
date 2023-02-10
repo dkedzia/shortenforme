@@ -1,6 +1,6 @@
 # Shorten for me
 
-Available live - http://shortenfor.me
+Available live - https://shortenfor.me
 
 URL shorting service
 
