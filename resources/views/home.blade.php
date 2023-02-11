@@ -14,7 +14,7 @@
                 method="post"
                 action="{{ route('aliases.addNew') }}"
                 name="shortenForMeForm"
-                onsubmit="formSubmitValidator(this)"
+                onsubmit="formSubmitValidator()"
             >
                 @csrf
                 <div class="form-group">
