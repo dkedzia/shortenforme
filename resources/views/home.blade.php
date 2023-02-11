@@ -12,7 +12,7 @@
             <form method="post" action="{{ route('aliases.addNew') }}">
                 @csrf
                 <div class="form-group">
-                    <input type="text" class="form-control {{ $errors->has('origin_url') ? 'error' : '' }}" name="origin_url" id="origin_url" placeholder="URL to be shortened...">
+                    <input type="url" class="form-control {{ $errors->has('origin_url') ? 'error' : '' }}" name="origin_url" id="origin_url" placeholder="URL to be shortened...">
                     @if ($errors->has('origin_url'))
                         <div class="error">
                             {{ $errors->first('origin_url') }}
