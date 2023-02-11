@@ -6,20 +6,7 @@
         <title>Shorten for me</title>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                document.querySelector('#origin_url').setAttribute('type', 'text')
-                document.querySelector('#protocol_tip').setAttribute('style', 'display: none;')
-            });
-
-            function formSubmitValidator() {
-                const originUrl = document.shortenForMeForm.origin_url.value;
-                if (!originUrl.startsWith('http') && !originUrl.startsWith('https')) {
-                    document.shortenForMeForm.origin_url.value = 'https://' + originUrl
-                }
-                return true
-            }
-        </script>
+        <script src="{{ asset('js/home.js') }}"></script>
     </head>
     <body>
         <div class="container mt-5">

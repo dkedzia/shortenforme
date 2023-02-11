@@ -6,21 +6,12 @@
         <title>Shorten for me</title>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-        <script>
-            function copyUrlToClipboard() {
-                window.navigator.clipboard.writeText('{{ $shortenedUrl }}');
-                const copyToClipboard = document.querySelector('#copy_to_clipboard')
-                copyToClipboard.textContent = 'Copied!'
-                setTimeout(() => {
-                    copyToClipboard.textContent = 'Copy'
-                }, 3000)
-            }
-        </script>
+        <script src="{{ asset('js/aliasAdded.js') }}"></script>
     </head>
     <body>
         <div class="container mt-5">
             Your shortened url:
-            <h2>{{ $shortenedUrl }}</h2>
+            <h2 id="shortened_url">{{ $shortenedUrl }}</h2>
             <div
                 id="copy_to_clipboard"
                 class="btn btn-dark btn-block"
