@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CustomUrl;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddAliasRequest extends FormRequest
@@ -24,7 +25,10 @@ class AddAliasRequest extends FormRequest
     public function rules()
     {
         return [
-            'origin_url' => 'required|max:1000|url',
+//            'origin_url' => 'required|max:1000|url',
+            'origin_url' => ['required', 'max:1000', new CustomUrl],
         ];
     }
+
+
 }
