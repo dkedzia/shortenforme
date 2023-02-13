@@ -137,7 +137,11 @@ class AliasesWebControllerTest extends TestCase
         ])->firstOrFail();
     }
 
-    /** @test */
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function shouldCreateNewAliasForDifferentExpirationDate(): void
     {
         // given
