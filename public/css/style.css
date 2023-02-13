@@ -30,3 +30,8 @@ label {
     border-color: red;
     padding: .375rem .75rem;
 }
+
+h6.additional-option-heading {
+    margin: 10px 0;
+    font-weight: bold;
+}

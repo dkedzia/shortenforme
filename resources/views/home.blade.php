@@ -25,13 +25,33 @@
                         id="origin_url"
                         placeholder="URL to be shortened..."
                     >
+                    @if ($errors->has('origin_url'))
+                        <div class="error">
+                            {{ $errors->first('origin_url') }}
+                        </div>
+                    @endif
                     <p
                         id="protocol_tip"
                         style="font-size: 12px; font-weight: bold; margin: 5px 0;"
                     >Tip: Don't forget the scheme (e.g. https://)</p>
-                    @if ($errors->has('origin_url'))
+                </div>
+                <div class="form-group">
+                    <details>
+                        <summary>Additional option</summary>
+                        <input type="checkbox" id="alias_should_expire" name="alias_should_expire" value="1">
+                        <label for="alias_should_expire">Alias should expire?</label>
+
+                        <h6 class="additional-option-heading">Expiration date</h6>
+                        <input
+                            type="date"
+                            class="form-control {{ $errors->has('expires_on') ? 'error' : '' }}"
+                            name="expires_on"
+                            id="expires_on"
+                        >
+                    </details>
+                    @if ($errors->has('expires_on'))
                         <div class="error">
-                            {{ $errors->first('origin_url') }}
+                            {{ $errors->first('expires_on') }}
                         </div>
                     @endif
                 </div>
