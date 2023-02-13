@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Alias\RandomAliasGenerator;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,8 @@ class AliasFactory extends Factory
     {
         return [
             'origin_url' => fake()->url(),
-            'alias' => substr(str_shuffle('iuogernjzdgdsuor'), 0, 10)
+            'alias' => substr(str_shuffle('iuogernjzdgdsuor'), 0, 10),
+            'expires_on' => null,
         ];
     }
 }
