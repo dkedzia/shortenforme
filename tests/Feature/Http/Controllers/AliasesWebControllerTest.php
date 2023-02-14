@@ -216,6 +216,7 @@ class AliasesWebControllerTest extends TestCase
 
         // then
         $response->assertStatus(404);
+        $response->assertSee('404.jpeg');
     }
 
     /** @test */

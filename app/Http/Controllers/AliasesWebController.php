@@ -9,7 +9,9 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
 
 class AliasesWebController extends Controller
@@ -40,10 +42,15 @@ class AliasesWebController extends Controller
             );
     }
 
-    public function redirect(string $alias): View|RedirectResponse
+    public function redirect(string $alias): View|RedirectResponse|Response
     {
-        /** @var Alias $alias */
-        $alias = Alias::where('alias', $alias)->firstOrFail();
+        try {
+            /** @var Alias $alias */
+            $alias = Alias::where('alias', $alias)->firstOrFail();
+        } catch (ModelNotFoundException $modelNotFoundException) {
+            return response()
+                ->view('404', status: 404);
+        }
 
         $expiredOn = $alias->getExpiresOn();
         if (!is_null($expiredOn) && $alias->getExpiresOn() < Carbon::now()->setTime(0, 0)) {
